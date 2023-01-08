@@ -1,4 +1,6 @@
-export const loginFormRules = {
+import { RuleObject } from "ant-design-vue/es/form";
+
+export const loginFormRules: Record<string, RuleObject[]> = {
   username: [
     {
       required: true,
@@ -25,4 +27,4 @@ export const loginFormRules = {
       trigger: "change",
     },
   ],
-} as const;
+};

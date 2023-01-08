@@ -9,17 +9,19 @@
       name="custom-validation"
       @validate="handleValidate"
       @finish="onFinish"
-      @finishFailed="onFinishFailed"
+      @finish-failed="onFinishFailed"
     >
-      <Form.Item label="Username" has-feedback name="username">
+      <Form.Item label="username" has-feedback name="username">
         <Input
+          id="username"
           v-model:value="profile.username"
           placeholder="Please enter a 3-16 length of username"
           :maxlength="16"
         />
       </Form.Item>
-      <Form.Item label="Password" has-feedback name="password">
+      <Form.Item label="password" has-feedback name="password">
         <Input
+          id="password"
           v-model:value="profile.password"
           :maxlength="20"
           placeholder="Please enter a 6-20 length of password"
@@ -52,7 +54,13 @@ const router = useRouter();
  * State
  */
 const profile = reactive({ username: "", password: "" });
-const fieldValidateResult = reactive({ username: false, password: false });
+const fieldValidateResult = reactive<{
+  username: boolean;
+  password: boolean;
+}>({
+  username: false,
+  password: false,
+});
 const disabledSubmit = computed(() => {
   return !fieldValidateResult.username || !fieldValidateResult.password;
 });
@@ -60,8 +68,9 @@ const disabledSubmit = computed(() => {
 /**
  * Methods
  */
-const handleValidate = (field: keyof typeof loginFormRules, result: boolean) => {
-  fieldValidateResult[field] = result;
+// @ts-ignore
+const handleValidate = (field, status): void => {
+  fieldValidateResult[field as "username" | "password"] = status;
 };
 const onFinish = (e: Event) => {
   console.log("onFinish", profile, e);
@@ -70,8 +79,8 @@ const onFinish = (e: Event) => {
 
   router.replace({ path: "/" });
 };
-const onFinishFailed = (e: any) => {
-  console.log("onFinishFailed", profile, e);
+const onFinishFailed = () => {
+  console.log("onFinishFailed", profile);
 };
 </script>
 
