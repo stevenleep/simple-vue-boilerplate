@@ -10,6 +10,7 @@ import viteCompression from "vite-plugin-compression";
 import eslintPlugin from "vite-plugin-eslint";
 import Inspect from "vite-plugin-inspect";
 import { createStyleImportPlugin, AndDesignVueResolve } from "vite-plugin-style-import";
+import mkcertPlugin from "vite-plugin-mkcert";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -86,6 +87,8 @@ export default defineConfig({
     progress(),
 
     Inspect(),
+
+    mkcertPlugin(),
   ],
 
   css: {
@@ -98,6 +101,7 @@ export default defineConfig({
       },
     },
   },
+
   resolve: {
     alias: {
       "~/": `${path.resolve(__dirname, "src")}/`,

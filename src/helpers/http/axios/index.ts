@@ -2,7 +2,7 @@ import axios from "axios";
 import { getEnvironmentWithDefault } from "@/helpers/environment";
 import { setupRequestInterceptor } from "./requestInterceptor";
 import { setResponseInterceptor } from "./responseInterceptor";
-import { createRetryableInstance } from "./Retry";
+import { createRetryableInstance } from "./retry";
 import { EnhancedRequestConfig } from "./types";
 
 const instance = axios.create({

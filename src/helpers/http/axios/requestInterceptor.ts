@@ -2,7 +2,7 @@ import { AxiosInstance } from "axios";
 import { flow } from "@/helpers/flow";
 import header from "./header";
 import { createCancel } from "./Cancel";
-import { errorHandler } from "./ErrorHandler";
+import { errorHandler } from "./errorHandler";
 
 const runRequestInterceptors = flow(header, createCancel);
 

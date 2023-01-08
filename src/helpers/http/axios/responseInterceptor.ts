@@ -1,5 +1,5 @@
 import { AxiosInstance, AxiosResponse } from "axios";
-import { errorHandler } from "./ErrorHandler";
+import { errorHandler } from "./errorHandler";
 import { removeCancelToken } from "./Cancel";
 import { EnhancedAxiosRequestConfig } from "@/helpers/http";
 
